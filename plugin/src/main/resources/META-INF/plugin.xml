@@ -1,0 +1,80 @@
+<idea-plugin>
+    <id>com.lingshi.apiradar</id>
+    <name>API Radar</name>
+    <vendor email="18704568472@163.com" url="https://github.com/lixidong/idea-api-radar">lingshi</vendor>
+
+    <description><![CDATA[
+        <h2>API Radar</h2>
+        <p><b>Zero-intrusion</b> capture of third-party HTTP requests/responses in your Java project,
+        without adding a single line of logging or breakpoint.</p>
+
+        <p>API Radar attaches a lightweight Java Agent to your running JVM, intercepts the supported HTTP
+        clients via ByteBuddy, and streams every request/response (method, URL, headers, body, duration,
+        status code, error) to an IDE Tool Window in real time.</p>
+
+        <h3>Supported HTTP clients</h3>
+        <ul>
+            <li>Spring RestTemplate</li>
+            <li>Apache HttpClient 4 / 5</li>
+            <li>OkHttp <i>(roadmap)</i></li>
+            <li>JDK HttpClient (Java 11+) <i>(roadmap)</i></li>
+            <li>Spring WebClient <i>(roadmap)</i></li>
+            <li>Feign <i>(roadmap)</i></li>
+        </ul>
+
+        <h3>How it works</h3>
+        <ol>
+            <li>Start your Java application (on JDK 21+ add <code>-Djdk.attach.allowAttachSelf=true</code>).</li>
+            <li>Run <b>Tools → Attach API Radar</b> and pick the target process.</li>
+            <li>Open the <b>API Radar</b> tool window at the bottom; events appear live as your code hits external APIs.</li>
+        </ol>
+
+        <h3>Privacy &amp; Security</h3>
+        <ul>
+            <li>All captured data stays on your local machine. <b>Nothing is uploaded</b> to any remote server.</li>
+            <li>The plugin and the Agent communicate over a local TCP port (loopback only).</li>
+            <li>You can pause capture, set URL include/exclude globs, and cap body sizes from the settings page.</li>
+            <li>Source code: <a href="https://github.com/lixidong/idea-api-radar">GitHub</a></li>
+        </ul>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <h3>0.1.0</h3>
+        <ul>
+            <li>Initial release.</li>
+            <li>Attach a Java Agent to a running JVM and capture Spring RestTemplate and Apache HttpClient 4/5 traffic.</li>
+            <li>Real-time Tool Window with request/response details, search, slow-request highlighting.</li>
+            <li>Settings: pause capture, max body size, URL include/exclude globs, slow threshold.</li>
+        </ul>
+    ]]></change-notes>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow
+                id="API Radar"
+                anchor="bottom"
+                factoryClass="com.lingshi.apiradar.plugin.ui.ApiRadarToolWindowFactory"
+                icon="AllIcons.Toolwindows.ToolWindowDebugger"/>
+
+        <applicationService serviceImplementation="com.lingshi.apiradar.plugin.service.EventBus"/>
+        <applicationService serviceImplementation="com.lingshi.apiradar.plugin.service.AgentAttachService"/>
+        <applicationService serviceImplementation="com.lingshi.apiradar.plugin.service.ApiRadarSettings"/>
+
+        <applicationConfigurable
+                parentId="tools"
+                id="com.lingshi.apiradar.settings"
+                displayName="API Radar"
+                instance="com.lingshi.apiradar.plugin.settings.ApiRadarConfigurable"/>
+    </extensions>
+
+    <actions>
+        <action id="ApiRadar.Attach"
+                class="com.lingshi.apiradar.plugin.action.AttachAgentAction"
+                text="Attach API Radar"
+                description="Inject the API Radar Agent into a running Java process">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
