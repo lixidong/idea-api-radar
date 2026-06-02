@@ -23,8 +23,8 @@ dependencies {
 tasks.jar {
     manifest {
         attributes(
-            "Premain-Class" to "com.lingshi.apiradar.agent.ApiRadarAgent",
-            "Agent-Class" to "com.lingshi.apiradar.agent.ApiRadarAgent",
+            "Premain-Class" to "io.github.lixidong.apiradar.agent.ApiRadarAgent",
+            "Agent-Class" to "io.github.lixidong.apiradar.agent.ApiRadarAgent",
             "Can-Redefine-Classes" to "true",
             "Can-Retransform-Classes" to "true",
             "Boot-Class-Path" to "api-radar-agent.jar"
@@ -39,8 +39,8 @@ val agentJar by tasks.registering(Jar::class) {
 
     manifest {
         attributes(
-            "Premain-Class" to "com.lingshi.apiradar.agent.ApiRadarAgent",
-            "Agent-Class" to "com.lingshi.apiradar.agent.ApiRadarAgent",
+            "Premain-Class" to "io.github.lixidong.apiradar.agent.ApiRadarAgent",
+            "Agent-Class" to "io.github.lixidong.apiradar.agent.ApiRadarAgent",
             "Can-Redefine-Classes" to "true",
             "Can-Retransform-Classes" to "true"
         )

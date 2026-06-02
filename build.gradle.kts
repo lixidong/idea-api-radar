@@ -3,7 +3,7 @@ plugins {
 }
 
 allprojects {
-    group = "com.lingshi.apiradar"
+    group = "io.github.lixidong.apiradar"
     version = "0.1.0-SNAPSHOT"
 }
 

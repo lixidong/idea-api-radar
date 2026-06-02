@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>com.lingshi.apiradar</id>
+    <id>io.github.lixidong.apiradar</id>
     <name>API Radar</name>
     <vendor email="18704568472@163.com" url="https://github.com/lixidong/idea-api-radar">lingshi</vendor>
 
@@ -55,23 +55,23 @@
         <toolWindow
                 id="API Radar"
                 anchor="bottom"
-                factoryClass="com.lingshi.apiradar.plugin.ui.ApiRadarToolWindowFactory"
+                factoryClass="io.github.lixidong.apiradar.plugin.ui.ApiRadarToolWindowFactory"
                 icon="AllIcons.Toolwindows.ToolWindowDebugger"/>
 
-        <applicationService serviceImplementation="com.lingshi.apiradar.plugin.service.EventBus"/>
-        <applicationService serviceImplementation="com.lingshi.apiradar.plugin.service.AgentAttachService"/>
-        <applicationService serviceImplementation="com.lingshi.apiradar.plugin.service.ApiRadarSettings"/>
+        <applicationService serviceImplementation="io.github.lixidong.apiradar.plugin.service.EventBus"/>
+        <applicationService serviceImplementation="io.github.lixidong.apiradar.plugin.service.AgentAttachService"/>
+        <applicationService serviceImplementation="io.github.lixidong.apiradar.plugin.service.ApiRadarSettings"/>
 
         <applicationConfigurable
                 parentId="tools"
-                id="com.lingshi.apiradar.settings"
+                id="io.github.lixidong.apiradar.settings"
                 displayName="API Radar"
-                instance="com.lingshi.apiradar.plugin.settings.ApiRadarConfigurable"/>
+                instance="io.github.lixidong.apiradar.plugin.settings.ApiRadarConfigurable"/>
     </extensions>
 
     <actions>
         <action id="ApiRadar.Attach"
-                class="com.lingshi.apiradar.plugin.action.AttachAgentAction"
+                class="io.github.lixidong.apiradar.plugin.action.AttachAgentAction"
                 text="Attach API Radar"
                 description="Inject the API Radar Agent into a running Java process">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
