@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>io.github.lixidong.apiradar</id>
     <name>API Radar</name>
-    <vendor email="18704568472@163.com" url="https://github.com/lixidong/idea-api-radar">lingshi</vendor>
+    <vendor email="18704568472@163.com" url="https://github.com/lixidong/idea-api-radar">木乄木</vendor>
 
     <description><![CDATA[
         <h2>API Radar</h2>
