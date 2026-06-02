@@ -2,6 +2,16 @@
 
 IntelliJ IDEA 插件：**零代码侵入**捕获 Java 项目中的三方 HTTP 接口请求与响应，免去手动加 log/断点的麻烦。
 
+## 截图
+
+**Tool Window（底部面板，实时展示请求列表与详情）：**
+
+![ToolWindow](docs/screenshots/toolwindow.png)
+
+**设置页（Tools → API Radar，可配置采集策略与过滤规则）：**
+
+![Settings](docs/screenshots/settings.png)
+
 ## 模块结构
 
 ```
